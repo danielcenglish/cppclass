@@ -79,13 +79,12 @@ int calculateCollatz(int num)
     int cycle = 1;
     int original = num;
     
-    if(computedValues.find(num) != computedValues.end())
-    {
-        return computedValues[num];
-    }
-    
     while(num != 1)
     {
+        if(computedValues.find(num) != computedValues.end())
+        {
+            return computedValues[num]+cycle-1;
+        }
         if(num%2!=0) //if num is odd
         {
             num = ((num*3)+1) >> 1;
@@ -97,7 +96,7 @@ int calculateCollatz(int num)
             ++cycle;
         }
     }
-    computedValues[original]=num;
+    computedValues[original]=cycle;
     return cycle;
 }
 
