@@ -13,10 +13,13 @@
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
+#include <map>
 
 #include "Collatz.h"
 
 using namespace std;
+
+std::map <int, int> computedValues;
 
 // ------------
 // collatz_read
@@ -33,21 +36,27 @@ pair<int, int> collatz_read (const string& s) {
 int calculateCollatz(int num)
 {
     int cycle = 1;
+    int original = num;
+    
+    if(computedValues.find(num) != computedValues.end())
+    {
+        return computedValues[num];
+    }
     
     while(num != 1)
     {
         if(num%2!=0) //if num is odd
         {
-            num = ((num*3)+1)/2;
+            num = ((num*3)+1) >> 1;
             cycle+=2;
         }
         else
         {
-            num = num/2;
+            num = num>>1;
             ++cycle;
         }
     }
-    
+    computedValues[original]=num;
     return cycle;
 }
 
