@@ -4,11 +4,11 @@
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
-map <int, int> computedValues;
+unordered_map <int, int> computedValues;
 
 
 // ------------
@@ -78,14 +78,17 @@ int calculateCollatz(int num)
 {
     int cycle = 1;
     int original = num;
+    bool found_in_cache = false;
     
-    while(num != 1)
+    while(num != 1 && !found_in_cache)
     {
-        if(computedValues.find(num) != computedValues.end())
+        int &stored_val = computedValues[num];
+        if(stored_val)
         {
-            return computedValues[num]+cycle-1;
+            cycle = stored_val+cycle-1;
+            found_in_cache = true;
         }
-        if(num%2!=0) //if num is odd
+        else if(num%2!=0) //if num is odd
         {
             num = ((num*3)+1) >> 1;
             cycle+=2;

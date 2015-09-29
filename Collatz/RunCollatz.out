@@ -1,4 +1,446 @@
+Storing value 1 with cycle 1 in cache.
+Storing value 2 with cycle 2 in cache.
+Looking up value 2 from cache
+Storing value 3 with cycle 8 in cache.
+Looking up value 2 from cache
+Storing value 4 with cycle 3 in cache.
+Looking up value 4 from cache
+Storing value 5 with cycle 6 in cache.
+Looking up value 3 from cache
+Storing value 6 with cycle 9 in cache.
+Looking up value 5 from cache
+Storing value 7 with cycle 17 in cache.
+Looking up value 4 from cache
+Storing value 8 with cycle 4 in cache.
+Looking up value 7 from cache
+Storing value 9 with cycle 20 in cache.
+Looking up value 5 from cache
+Storing value 10 with cycle 7 in cache.
 1 10 20
+Looking up value 10 from cache
+Storing value 100 with cycle 26 in cache.
+Looking up value 10 from cache
+Storing value 101 with cycle 26 in cache.
+Looking up value 10 from cache
+Storing value 102 with cycle 26 in cache.
+Looking up value 10 from cache
+Storing value 103 with cycle 88 in cache.
+Looking up value 10 from cache
+Storing value 104 with cycle 13 in cache.
+Looking up value 101 from cache
+Storing value 105 with cycle 39 in cache.
+Looking up value 10 from cache
+Storing value 106 with cycle 13 in cache.
+Looking up value 103 from cache
+Storing value 107 with cycle 101 in cache.
+Looking up value 107 from cache
+Storing value 108 with cycle 114 in cache.
+Looking up value 107 from cache
+Storing value 109 with cycle 114 in cache.
+Looking up value 107 from cache
+Storing value 110 with cycle 114 in cache.
+Looking up value 10 from cache
+Storing value 111 with cycle 70 in cache.
+Looking up value 7 from cache
+Storing value 112 with cycle 21 in cache.
+Looking up value 8 from cache
+Storing value 113 with cycle 13 in cache.
+Looking up value 7 from cache
+Storing value 114 with cycle 34 in cache.
+Looking up value 7 from cache
+Storing value 115 with cycle 34 in cache.
+Looking up value 10 from cache
+Storing value 116 with cycle 21 in cache.
+Looking up value 10 from cache
+Storing value 117 with cycle 21 in cache.
+Looking up value 101 from cache
+Storing value 118 with cycle 34 in cache.
+Looking up value 101 from cache
+Storing value 119 with cycle 34 in cache.
+Looking up value 10 from cache
+Storing value 120 with cycle 21 in cache.
+Looking up value 103 from cache
+Storing value 121 with cycle 96 in cache.
+Looking up value 10 from cache
+Storing value 122 with cycle 21 in cache.
+Looking up value 118 from cache
+Storing value 123 with cycle 47 in cache.
+Looking up value 107 from cache
+Storing value 124 with cycle 109 in cache.
+Looking up value 107 from cache
+Storing value 125 with cycle 109 in cache.
+Looking up value 103 from cache
+Storing value 126 with cycle 109 in cache.
+Looking up value 116 from cache
+Storing value 127 with cycle 47 in cache.
+Looking up value 8 from cache
+Storing value 128 with cycle 8 in cache.
+Looking up value 110 from cache
+Storing value 129 with cycle 122 in cache.
+Looking up value 7 from cache
+Storing value 130 with cycle 29 in cache.
+Looking up value 7 from cache
+Storing value 131 with cycle 29 in cache.
+Looking up value 10 from cache
+Storing value 132 with cycle 29 in cache.
+Looking up value 100 from cache
+Storing value 133 with cycle 29 in cache.
+Looking up value 101 from cache
+Storing value 134 with cycle 29 in cache.
+Looking up value 7 from cache
+Storing value 135 with cycle 42 in cache.
+Looking up value 10 from cache
+Storing value 136 with cycle 16 in cache.
+Looking up value 103 from cache
+Storing value 137 with cycle 91 in cache.
+Looking up value 104 from cache
+Storing value 138 with cycle 16 in cache.
+Looking up value 118 from cache
+Storing value 139 with cycle 42 in cache.
+Looking up value 10 from cache
+Storing value 140 with cycle 16 in cache.
+Looking up value 106 from cache
+Storing value 141 with cycle 16 in cache.
+Looking up value 107 from cache
+Storing value 142 with cycle 104 in cache.
+Looking up value 137 from cache
+Storing value 143 with cycle 104 in cache.
+Looking up value 9 from cache
+Storing value 144 with cycle 24 in cache.
+Looking up value 109 from cache
+Storing value 145 with cycle 117 in cache.
+Looking up value 110 from cache
+Storing value 146 with cycle 117 in cache.
+Looking up value 125 from cache
+Storing value 147 with cycle 117 in cache.
+Looking up value 7 from cache
+Storing value 148 with cycle 24 in cache.
+Looking up value 112 from cache
+Storing value 149 with cycle 24 in cache.
+Looking up value 113 from cache
+Storing value 150 with cycle 16 in cache.
+Looking up value 128 from cache
+Storing value 151 with cycle 16 in cache.
+Looking up value 10 from cache
+Storing value 152 with cycle 24 in cache.
+Looking up value 115 from cache
+Storing value 153 with cycle 37 in cache.
+Looking up value 116 from cache
+Storing value 154 with cycle 24 in cache.
+Looking up value 122 from cache
+Storing value 155 with cycle 86 in cache.
+Looking up value 134 from cache
+Storing value 156 with cycle 37 in cache.
+Looking up value 118 from cache
+Storing value 157 with cycle 37 in cache.
+Looking up value 119 from cache
+Storing value 158 with cycle 37 in cache.
+Looking up value 122 from cache
+Storing value 159 with cycle 55 in cache.
+Looking up value 10 from cache
+Storing value 160 with cycle 11 in cache.
+Looking up value 121 from cache
+Storing value 161 with cycle 99 in cache.
+Looking up value 122 from cache
+Storing value 162 with cycle 24 in cache.
+Looking up value 10 from cache
+Storing value 163 with cycle 24 in cache.
+Looking up value 107 from cache
+Storing value 164 with cycle 112 in cache.
+Looking up value 124 from cache
+Storing value 165 with cycle 112 in cache.
+Looking up value 125 from cache
+Storing value 166 with cycle 112 in cache.
+Looking up value 122 from cache
+Storing value 167 with cycle 68 in cache.
+Looking up value 8 from cache
+Storing value 168 with cycle 11 in cache.
+Looking up value 127 from cache
+Storing value 169 with cycle 50 in cache.
+Looking up value 128 from cache
+Storing value 170 with cycle 11 in cache.
+Looking up value 145 from cache
+Storing value 171 with cycle 125 in cache.
+Looking up value 7 from cache
+Storing value 172 with cycle 32 in cache.
+Looking up value 130 from cache
+Storing value 173 with cycle 32 in cache.
+Looking up value 131 from cache
+Storing value 174 with cycle 32 in cache.
+Looking up value 167 from cache
+Storing value 175 with cycle 81 in cache.
+Looking up value 10 from cache
+Storing value 176 with cycle 19 in cache.
+Looking up value 133 from cache
+Storing value 177 with cycle 32 in cache.
+Looking up value 134 from cache
+Storing value 178 with cycle 32 in cache.
+Looking up value 101 from cache
+Storing value 179 with cycle 32 in cache.
+Looking up value 10 from cache
+Storing value 180 with cycle 19 in cache.
+Looking up value 136 from cache
+Storing value 181 with cycle 19 in cache.
+Looking up value 137 from cache
+Storing value 182 with cycle 94 in cache.
+Looking up value 155 from cache
+Storing value 183 with cycle 94 in cache.
+Looking up value 10 from cache
+Storing value 184 with cycle 19 in cache.
+Looking up value 139 from cache
+Storing value 185 with cycle 45 in cache.
+Looking up value 140 from cache
+Storing value 186 with cycle 19 in cache.
+Looking up value 119 from cache
+Storing value 187 with cycle 45 in cache.
+Looking up value 107 from cache
+Storing value 188 with cycle 107 in cache.
+Looking up value 142 from cache
+Storing value 189 with cycle 107 in cache.
+Looking up value 143 from cache
+Storing value 190 with cycle 107 in cache.
+Looking up value 154 from cache
+Storing value 191 with cycle 45 in cache.
+Looking up value 6 from cache
+Storing value 192 with cycle 14 in cache.
+Looking up value 145 from cache
+Storing value 193 with cycle 120 in cache.
+Looking up value 146 from cache
+Storing value 194 with cycle 120 in cache.
+Looking up value 110 from cache
+Storing value 195 with cycle 120 in cache.
+Looking up value 7 from cache
+Storing value 196 with cycle 27 in cache.
+Looking up value 148 from cache
+Storing value 197 with cycle 27 in cache.
+Looking up value 149 from cache
+Storing value 198 with cycle 27 in cache.
+Looking up value 190 from cache
+Storing value 199 with cycle 120 in cache.
+Looking up value 100 from cache
+Storing value 200 with cycle 27 in cache.
 100 200 125
+Looking up value 151 from cache
+Storing value 201 with cycle 19 in cache.
+Looking up value 101 from cache
+Storing value 202 with cycle 27 in cache.
+Looking up value 172 from cache
+Storing value 203 with cycle 40 in cache.
+Looking up value 102 from cache
+Storing value 204 with cycle 27 in cache.
+Looking up value 154 from cache
+Storing value 205 with cycle 27 in cache.
+Looking up value 103 from cache
+Storing value 206 with cycle 89 in cache.
+Looking up value 167 from cache
+Storing value 207 with cycle 89 in cache.
+Looking up value 104 from cache
+Storing value 208 with cycle 14 in cache.
+Looking up value 157 from cache
+Storing value 209 with cycle 40 in cache.
+Looking up value 105 from cache
+Storing value 210 with cycle 40 in cache.
 201 210 89
+Looking up value 169 from cache
+Storing value 900 with cycle 55 in cache.
+Looking up value 169 from cache
+Storing value 901 with cycle 55 in cache.
+Looking up value 127 from cache
+Storing value 902 with cycle 55 in cache.
+Looking up value 143 from cache
+Storing value 903 with cycle 117 in cache.
+Looking up value 113 from cache
+Storing value 904 with cycle 16 in cache.
+Looking up value 173 from cache
+Storing value 905 with cycle 68 in cache.
+Looking up value 170 from cache
+Storing value 906 with cycle 16 in cache.
+Looking up value 205 from cache
+Storing value 907 with cycle 55 in cache.
+Looking up value 128 from cache
+Storing value 908 with cycle 16 in cache.
+Looking up value 128 from cache
+Storing value 909 with cycle 16 in cache.
+Looking up value 122 from cache
+Storing value 910 with cycle 42 in cache.
+Looking up value 122 from cache
+Storing value 911 with cycle 42 in cache.
+Looking up value 114 from cache
+Storing value 912 with cycle 37 in cache.
+Looking up value 193 from cache
+Storing value 913 with cycle 130 in cache.
+Looking up value 145 from cache
+Storing value 914 with cycle 130 in cache.
+Looking up value 145 from cache
+Storing value 915 with cycle 130 in cache.
+Looking up value 172 from cache
+Storing value 916 with cycle 37 in cache.
+Looking up value 172 from cache
+Storing value 917 with cycle 37 in cache.
+Looking up value 194 from cache
+Storing value 918 with cycle 130 in cache.
+Looking up value 194 from cache
+Storing value 919 with cycle 130 in cache.
+Looking up value 115 from cache
+Storing value 920 with cycle 37 in cache.
+Looking up value 146 from cache
+Storing value 921 with cycle 130 in cache.
+Looking up value 173 from cache
+Storing value 922 with cycle 37 in cache.
+Looking up value 209 from cache
+Storing value 923 with cycle 68 in cache.
+Looking up value 124 from cache
+Storing value 924 with cycle 130 in cache.
+Looking up value 124 from cache
+Storing value 925 with cycle 130 in cache.
+Looking up value 124 from cache
+Storing value 926 with cycle 130 in cache.
+Looking up value 911 from cache
+Storing value 927 with cycle 117 in cache.
+Looking up value 116 from cache
+Storing value 928 with cycle 24 in cache.
+Looking up value 166 from cache
+Storing value 929 with cycle 130 in cache.
+Looking up value 131 from cache
+Storing value 930 with cycle 37 in cache.
+Looking up value 131 from cache
+Storing value 931 with cycle 37 in cache.
+Looking up value 175 from cache
+Storing value 932 with cycle 86 in cache.
+Looking up value 175 from cache
+Storing value 933 with cycle 86 in cache.
+Looking up value 167 from cache
+Storing value 934 with cycle 86 in cache.
+Looking up value 125 from cache
+Storing value 935 with cycle 130 in cache.
+Looking up value 117 from cache
+Storing value 936 with cycle 24 in cache.
+Looking up value 157 from cache
+Storing value 937 with cycle 174 in cache.
+Looking up value 176 from cache
+Storing value 938 with cycle 24 in cache.
+Looking up value 911 from cache
+Storing value 939 with cycle 86 in cache.
+Looking up value 199 from cache
+Storing value 940 with cycle 130 in cache.
+Looking up value 199 from cache
+Storing value 941 with cycle 130 in cache.
+Looking up value 199 from cache
+Storing value 942 with cycle 130 in cache.
+Looking up value 112 from cache
+Storing value 943 with cycle 37 in cache.
+Looking up value 118 from cache
+Storing value 944 with cycle 37 in cache.
+Looking up value 133 from cache
+Storing value 945 with cycle 37 in cache.
+Looking up value 200 from cache
+Storing value 946 with cycle 37 in cache.
+Looking up value 200 from cache
+Storing value 947 with cycle 37 in cache.
+Looking up value 178 from cache
+Storing value 948 with cycle 37 in cache.
+Looking up value 178 from cache
+Storing value 949 with cycle 37 in cache.
+Looking up value 904 from cache
+Storing value 950 with cycle 29 in cache.
+Looking up value 904 from cache
+Storing value 951 with cycle 29 in cache.
+Looking up value 119 from cache
+Storing value 952 with cycle 37 in cache.
+Looking up value 151 from cache
+Storing value 953 with cycle 29 in cache.
+Looking up value 179 from cache
+Storing value 954 with cycle 37 in cache.
+Looking up value 908 from cache
+Storing value 955 with cycle 29 in cache.
+Looking up value 911 from cache
+Storing value 956 with cycle 55 in cache.
+Looking up value 911 from cache
+Storing value 957 with cycle 55 in cache.
+Looking up value 911 from cache
+Storing value 958 with cycle 55 in cache.
+Looking up value 137 from cache
+Storing value 959 with cycle 130 in cache.
+Looking up value 120 from cache
+Storing value 960 with cycle 24 in cache.
+Looking up value 203 from cache
+Storing value 961 with cycle 50 in cache.
+Looking up value 917 from cache
+Storing value 962 with cycle 50 in cache.
+Looking up value 917 from cache
+Storing value 963 with cycle 50 in cache.
+Looking up value 181 from cache
+Storing value 964 with cycle 24 in cache.
+Looking up value 181 from cache
+Storing value 965 with cycle 24 in cache.
+Looking up value 136 from cache
+Storing value 966 with cycle 24 in cache.
+Looking up value 919 from cache
+Storing value 967 with cycle 143 in cache.
+Looking up value 121 from cache
+Storing value 968 with cycle 99 in cache.
+Looking up value 173 from cache
+Storing value 969 with cycle 50 in cache.
+Looking up value 182 from cache
+Storing value 970 with cycle 99 in cache.
+Looking up value 205 from cache
+Storing value 971 with cycle 37 in cache.
+Looking up value 137 from cache
+Storing value 972 with cycle 99 in cache.
+Looking up value 137 from cache
+Storing value 973 with cycle 99 in cache.
+Looking up value 124 from cache
+Storing value 974 with cycle 143 in cache.
+Looking up value 124 from cache
+Storing value 975 with cycle 143 in cache.
+Looking up value 122 from cache
+Storing value 976 with cycle 24 in cache.
+Looking up value 155 from cache
+Storing value 977 with cycle 99 in cache.
+Looking up value 931 from cache
+Storing value 978 with cycle 50 in cache.
+Looking up value 931 from cache
+Storing value 979 with cycle 50 in cache.
+Looking up value 184 from cache
+Storing value 980 with cycle 24 in cache.
+Looking up value 184 from cache
+Storing value 981 with cycle 24 in cache.
+Looking up value 935 from cache
+Storing value 982 with cycle 143 in cache.
+Looking up value 935 from cache
+Storing value 983 with cycle 143 in cache.
+Looking up value 123 from cache
+Storing value 984 with cycle 50 in cache.
+Looking up value 208 from cache
+Storing value 985 with cycle 24 in cache.
+Looking up value 185 from cache
+Storing value 986 with cycle 50 in cache.
+Looking up value 938 from cache
+Storing value 987 with cycle 37 in cache.
+Looking up value 209 from cache
+Storing value 988 with cycle 50 in cache.
+Looking up value 209 from cache
+Storing value 989 with cycle 50 in cache.
+Looking up value 956 from cache
+Storing value 990 with cycle 99 in cache.
+Looking up value 956 from cache
+Storing value 991 with cycle 99 in cache.
+Looking up value 124 from cache
+Storing value 992 with cycle 112 in cache.
+Looking up value 962 from cache
+Storing value 993 with cycle 94 in cache.
+Looking up value 140 from cache
+Storing value 994 with cycle 24 in cache.
+Looking up value 140 from cache
+Storing value 995 with cycle 24 in cache.
+Looking up value 187 from cache
+Storing value 996 with cycle 50 in cache.
+Looking up value 187 from cache
+Storing value 997 with cycle 50 in cache.
+Looking up value 119 from cache
+Storing value 998 with cycle 50 in cache.
+Looking up value 178 from cache
+Storing value 999 with cycle 50 in cache.
+Looking up value 125 from cache
+Storing value 1000 with cycle 112 in cache.
 900 1000 174

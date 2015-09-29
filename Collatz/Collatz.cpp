@@ -13,13 +13,13 @@
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
-#include <map>
+#include <unordered_map>
 
 #include "Collatz.h"
 
 using namespace std;
 
-std::map <int, int> computedValues;
+std::unordered_map <int, int> computedValues;
 
 // ------------
 // collatz_read
@@ -37,12 +37,16 @@ int calculateCollatz(int num)
 {
     int cycle = 1;
     int original = num;
+    bool found_in_cache = false;
     
-    while(num != 1)
+    while(num != 1 && !found_in_cache)
     {
-        if(computedValues.find(num) != computedValues.end())
+        int &stored_val = computedValues[num];
+        if(stored_val)
         {
-            return computedValues[num]+cycle-1;
+            cout<<"Looking up value " << num << " from cache" << endl;
+            cycle = stored_val+cycle-1;
+            found_in_cache = true;
         }
         else if(num%2!=0) //if num is odd
         {
@@ -56,6 +60,7 @@ int calculateCollatz(int num)
         }
     }
     computedValues[original]=cycle;
+    cout << "Storing value " << original << " with cycle " << cycle << " in cache." << endl;
     return cycle;
 }
 
