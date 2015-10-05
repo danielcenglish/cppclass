@@ -8,6 +8,7 @@
 #include <sstream>
 #include <algorithm>
 #include <list>
+#include <queue>
 using namespace std;
 
 
@@ -16,72 +17,110 @@ using namespace std;
 // main
 // ----
 
-void two_buttons_solve (istream& r, ostream& w);
+void two_buttons_solve(istream& r, ostream& w);
 
-int main () {
-    
-    two_buttons_solve(cin, cout);
-    return 0;}
+int main() {
+
+	two_buttons_solve(cin, cout);
+	return 0;
+}
 
 int two_buttons_eval(int n, int m)
 {
-    //If n is less than m, multiply n by 2.
-    //If n is greater than m, subtract 1.
-    //If n = m, return.
-    list<int>numsChecked(n);
-    
-    if(n==m) //base case
-    {
-        return 0;
-    }
-    else
-    {
-        if(n > m)
-        {
-            cout << "n (" << n << ") is greater than m (" << m << ")" << endl;
-            //need to subtract 1 always
-            return two_buttons_eval(n-1,m) + 1;
-        }
-        else if ((n*2) == m)
-        {
-            cout << "n (" << n << ") * 2 is equal to m (" << m << ")" << endl;
-            return 1;
-        }
-        else if (n-1 == m)
-        {
-            cout << "n (" << n << ") - 1 is equal to m (" << m << ")" << endl;
-            return 1;
-        }
-        else
-        {
-            cout << "n (" << n << ") is less than m (" << m << ")" << endl;
-            //may multiply by 2 or subtract 1. How to know which?
-            //the two options are to subtract 1 or multiply by 2. Do both!
-            int answer_by_multiplying = two_buttons_eval(n*2,m);
+	//Starting at m and moving toward n, do a breadth first search of all options to see which ones move closer to n.
+	//use a pair to store: (current number, distance down path)
 
-            int answer_by_subtracting = two_buttons_eval(n-1,m);
-            return min(answer_by_subtracting, answer_by_multiplying) + 1;
-        }
-        
-    }
+	queue<pair<int,int>> possiblePaths;
+	possiblePaths.push(make_pair(m,0));
+	pair<int,int> currentVal;
+	int cycleLength = 0;
+	int best_cycle_found = INT_MAX;
+	int min_cycle_in_queue = INT_MAX;
+	int next_cycle = 0;
+
+	while (!possiblePaths.empty() && (best_cycle_found == INT_MAX || best_cycle_found > min_cycle_in_queue))
+	{
+		currentVal = possiblePaths.front();
+		possiblePaths.pop();
+		//cout << "Testing value " << currentVal.first << " at cycle length " << currentVal.second << endl;
+		if (currentVal.first == n && currentVal.second < best_cycle_found)
+		{
+			//cout << "Found solution at " << currentVal.second << endl;
+			best_cycle_found = currentVal.second;
+			//break;
+		}
+		else
+		{
+			next_cycle = currentVal.second + 1;
+			if (next_cycle < min_cycle_in_queue)
+			{
+				min_cycle_in_queue = next_cycle;
+			}
+			//compute two possible paths from the next value
+			if (currentVal.second + 1 < best_cycle_found)
+			{
+				if (currentVal.first > n && currentVal.first%2==0)
+				{
+					possiblePaths.push(make_pair(currentVal.first >> 1, currentVal.second + 1));
+				}
+				
+				if (!(currentVal.first % 4 == 0 && (currentVal.first >> 2) > n))
+				{
+					possiblePaths.push(make_pair(currentVal.first + 1, currentVal.second + 1));
+				}
+			}
+		}
+	}
+
+	/*
+	while (!possiblePaths.empty())
+	{
+		currentVal = possiblePaths.front();
+		possiblePaths.pop();
+		//cout << "Testing value " << currentVal.first << " at cycle length " << currentVal.second << endl;
+		if (currentVal.first == m)
+		{
+			//cout << "Found solution at " << currentVal.second << endl;
+			best_cycle_found = min(best_cycle_found,currentVal.second);
+			break;
+		}
+		else
+		{
+			//compute two possible paths from the next value
+			if (currentVal.second + 1 < best_cycle_found)
+			{
+				if (currentVal.first < m)
+				{
+					possiblePaths.push(make_pair(currentVal.first << 1, currentVal.second + 1));
+				}
+
+				possiblePaths.push(make_pair(currentVal.first - 1, currentVal.second + 1));
+			}
+		}
+	}
+	*/
+
+
+	return currentVal.second;
 }
 
-pair<int, int> two_buttons_read (const string& s) {
-    istringstream sin(s);
-    int i;
-    int j;
-    sin >> i >> j;
-    return make_pair(i, j);}
+pair<int, int> two_buttons_read(const string& s) {
+	istringstream sin(s);
+	int i;
+	int j;
+	sin >> i >> j;
+	return make_pair(i, j);
+}
 
-void two_buttons_solve (istream& r, ostream& w) {
-    string s;
-    while (getline(r, s)) {
-        const pair<int, int> p = two_buttons_read(s);
-        const int            i = p.first;
-        const int            j = p.second;
-        const int            v = two_buttons_eval(i, j);
-        w << v << endl;
-    }
+void two_buttons_solve(istream& r, ostream& w) {
+	string s;
+	while (getline(r, s)) {
+		const pair<int, int> p = two_buttons_read(s);
+		const int            i = p.first;
+		const int            j = p.second;
+		const int            v = two_buttons_eval(i, j);
+		w << v << endl;
+	}
 }
 /*
 % g++ -pedantic -std=c++11 -Wall Collatz.c++ RunCollatz.c++ -o RunCollatz
