@@ -29,83 +29,68 @@ int two_buttons_eval(int n, int m)
 {
 	//Starting at m and moving toward n, do a breadth first search of all options to see which ones move closer to n.
 	//use a pair to store: (current number, distance down path)
-
 	queue<pair<int,int>> possiblePaths;
 	possiblePaths.push(make_pair(m,0));
 	pair<int,int> currentVal;
 	int best_cycle_found = INT_MAX;
-	int min_cycle_in_queue = 1;
-	int next_cycle = 0;
+    int next_cycle = 0;
+    int cycle = 0;
 
-	while (!possiblePaths.empty() && best_cycle_found > min_cycle_in_queue)
-	{
-		currentVal = possiblePaths.front();
-		possiblePaths.pop();
-		//cout << "Testing value " << currentVal.first << " at cycle length " << currentVal.second << endl;
-		if (currentVal.first == n) //this is a solution, no need to keep going
-		{
-			cout << "Found solution at " << currentVal.second << endl;
-            if(currentVal.second < best_cycle_found)
-            {
-                best_cycle_found = currentVal.second;
-            }
-			//break;
-		}
-		else
-		{
-			next_cycle = currentVal.second + 1;
-			if (next_cycle < min_cycle_in_queue)
-			{
-				min_cycle_in_queue = next_cycle;
-			}
-			//compute two possible paths from the next value
-            //Only add things to the queue if there is a possibility of them beating the best cycle
-			if (currentVal.second + 1 < best_cycle_found)
-			{
-                //if m is greater than n and m can be evenly divided by 2, try dividing.
-				if (currentVal.first > n && currentVal.first%2==0)
-				{
-					possiblePaths.push(make_pair(currentVal.first >> 1, currentVal.second + 1));
-				}
-				
-                //If m/4 is still greater than n, there is no reason to try subtracting 1.
-				if (!(currentVal.first % 4 == 0 && (currentVal.first >> 2) > n))
-				{
-					possiblePaths.push(make_pair(currentVal.first + 1, currentVal.second + 1));
-				}
-			}
-		}
-	}
-
-	/*
 	while (!possiblePaths.empty())
 	{
 		currentVal = possiblePaths.front();
 		possiblePaths.pop();
-		//cout << "Testing value " << currentVal.first << " at cycle length " << currentVal.second << endl;
-		if (currentVal.first == m)
+        cycle = currentVal.second;
+        
+        //if m is greater than n, the solution is trival--just do -1 until n is reached.
+        if(currentVal.first < n)
+        {
+            cycle = cycle + (n-currentVal.first);
+            return cycle;
+        }
+        
+        //If m can be divided and still be greater than n, do so.
+        while(currentVal.first%2==0 && currentVal.first/2 > n)
+        {
+            currentVal.first = currentVal.first/2;
+            //cout << "reducing m by dividing, new m is " << currentVal.first << endl;
+            ++cycle;
+        }
+        
+		if (currentVal.first == n) //this is a solution, no need to keep going
 		{
 			//cout << "Found solution at " << currentVal.second << endl;
-			best_cycle_found = min(best_cycle_found,currentVal.second);
-			break;
+            if(cycle < best_cycle_found)
+            {
+                best_cycle_found = cycle;
+            }
+            return best_cycle_found;
 		}
 		else
 		{
+			next_cycle = cycle + 1;
+            
 			//compute two possible paths from the next value
-			if (currentVal.second + 1 < best_cycle_found)
+            //Only add things to the queue if there is a possibility of them beating the best cycle
+			if (next_cycle < best_cycle_found)
 			{
-				if (currentVal.first < m)
+                //if m is greater than n and m can be evenly divided by 2, try dividing.
+				if (currentVal.first > n && currentVal.first%2==0)
 				{
-					possiblePaths.push(make_pair(currentVal.first << 1, currentVal.second + 1));
+                    //cout << "dividing m by 2" << endl;
+					possiblePaths.push(make_pair((currentVal.first >> 1), next_cycle));
 				}
-
-				possiblePaths.push(make_pair(currentVal.first - 1, currentVal.second + 1));
+                
+                //If m/4 is still greater than n, there is no reason to try subtracting 1.
+				if (!(currentVal.first % 4 == 0 && (currentVal.first >> 2) > n))
+				{
+                    //cout << "adding 1 to m" << endl;
+					possiblePaths.push(make_pair(currentVal.first + 1, next_cycle));
+				}
+                
 			}
 		}
 	}
-	*/
-
-
 	return currentVal.second;
 }
 
