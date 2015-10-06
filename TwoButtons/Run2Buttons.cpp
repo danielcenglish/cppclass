@@ -33,20 +33,22 @@ int two_buttons_eval(int n, int m)
 	queue<pair<int,int>> possiblePaths;
 	possiblePaths.push(make_pair(m,0));
 	pair<int,int> currentVal;
-	int cycleLength = 0;
 	int best_cycle_found = INT_MAX;
-	int min_cycle_in_queue = INT_MAX;
+	int min_cycle_in_queue = 1;
 	int next_cycle = 0;
 
-	while (!possiblePaths.empty() && (best_cycle_found == INT_MAX || best_cycle_found > min_cycle_in_queue))
+	while (!possiblePaths.empty() && best_cycle_found > min_cycle_in_queue)
 	{
 		currentVal = possiblePaths.front();
 		possiblePaths.pop();
 		//cout << "Testing value " << currentVal.first << " at cycle length " << currentVal.second << endl;
-		if (currentVal.first == n && currentVal.second < best_cycle_found)
+		if (currentVal.first == n) //this is a solution, no need to keep going
 		{
-			//cout << "Found solution at " << currentVal.second << endl;
-			best_cycle_found = currentVal.second;
+			cout << "Found solution at " << currentVal.second << endl;
+            if(currentVal.second < best_cycle_found)
+            {
+                best_cycle_found = currentVal.second;
+            }
 			//break;
 		}
 		else
@@ -57,13 +59,16 @@ int two_buttons_eval(int n, int m)
 				min_cycle_in_queue = next_cycle;
 			}
 			//compute two possible paths from the next value
+            //Only add things to the queue if there is a possibility of them beating the best cycle
 			if (currentVal.second + 1 < best_cycle_found)
 			{
+                //if m is greater than n and m can be evenly divided by 2, try dividing.
 				if (currentVal.first > n && currentVal.first%2==0)
 				{
 					possiblePaths.push(make_pair(currentVal.first >> 1, currentVal.second + 1));
 				}
 				
+                //If m/4 is still greater than n, there is no reason to try subtracting 1.
 				if (!(currentVal.first % 4 == 0 && (currentVal.first >> 2) > n))
 				{
 					possiblePaths.push(make_pair(currentVal.first + 1, currentVal.second + 1));
