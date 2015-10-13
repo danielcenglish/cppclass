@@ -15,8 +15,9 @@ public:
     int _vertexNum;
     //priority_queue<int,std::vector<int>,greater<int>> neighbors;
     map<int,int> _neighbors; //neighbor, distance
-    int _dist_from_source;
+    unsigned long long int _dist_from_source;
     int prev_vertex = -1;
+    bool visited = false;
     
     Node()
     {
@@ -51,7 +52,7 @@ public:
         }
         else
         {
-            _dist_from_source = INT_MAX;
+            _dist_from_source = ULONG_MAX;
         }
     }
     
@@ -70,12 +71,12 @@ public:
         }
     }
     
-    int distance_from_source() const
+    unsigned long long int distance_from_source() const
     {
         return _dist_from_source;
     }
     
-    void set_distance_from_source(int d)
+    void set_distance_from_source(unsigned long long int d)
     {
         _dist_from_source = d;
     }
@@ -121,7 +122,8 @@ vector<int> nodes_to_check;
 
 int main()
 {
-    int end_vertex, total_paths, current_node, current_target, current_distance;
+    int end_vertex, total_paths, current_node, current_target;
+    unsigned long long int current_distance;
     cin >> end_vertex >>total_paths;
     for(int i = 0; i<total_paths; i++)
     {
@@ -142,18 +144,21 @@ int main()
     //add final node as a Node object. it won't have any neighbors
     Node& end_node = nodes[end_vertex];
     end_node.setVertex(end_vertex);
+    unvisited_nodes.push(nodes[1]);
     
     
     //add nodes to a list of nodes to check
     for (map<int,Node>::iterator it=nodes.begin(); it!=nodes.end(); ++it)
     {
         //unvisited_nodes.push(it->second);
-        nodes_to_check.push_back(it->first);
+        //nodes_to_check.push_back(it->first);
     }
     
-    while(!nodes_to_check.empty())
+    while(!unvisited_nodes.empty())
     {
+        Node check_node = unvisited_nodes.top();
         //find node with least distance from source
+        /*
         Node least_node;
         int least_dist = INT_MAX;
         vector<int>::iterator index;
@@ -179,7 +184,7 @@ int main()
         {
             nodes_to_check.erase(index);
         }
-        
+        */
         //cout << "Checking node " << check_node._vertexNum << endl;
         
         
@@ -189,17 +194,22 @@ int main()
         
         for(map<int,int>::iterator it=check_node._neighbors.begin(); it!=check_node._neighbors.end();++it)
         {
-            int possible_dist = check_node.distance_from_source()+it->second;
-            //cout << "current node distance from source is " << nodes[check_node._vertexNum].distance_from_source() << endl;
-            //cout << "neighbor node " << it->first << " distance from current is " << it->second << endl;
-            if(possible_dist < nodes[it->first].distance_from_source())
+            if(nodes[it->first].visited == false)
             {
-                //cout << "setting node " << nodes[it->first]._vertexNum << " to distance " << possible_dist << endl;
-                nodes[it->first].set_distance_from_source(possible_dist);
-                nodes[it->first].set_prev(check_node._vertexNum);
+                unsigned long long int possible_dist = check_node.distance_from_source()+it->second;
+                //cout << "current node distance from source is " << nodes[check_node._vertexNum].distance_from_source() << endl;
+                //cout << "neighbor node " << it->first << " distance from current is " << it->second << endl;
+                if(possible_dist < nodes[it->first].distance_from_source())
+                {
+                    //cout << "setting node " << nodes[it->first]._vertexNum << " to distance " << possible_dist << endl;
+                    nodes[it->first].set_distance_from_source(possible_dist);
+                    nodes[it->first].set_prev(check_node._vertexNum);
+                    unvisited_nodes.push(nodes[it->first]);
+                }
             }
         }
-        
+        check_node.visited = true;
+        unvisited_nodes.pop();
 
         //cout << "End of loop" << endl;
         
