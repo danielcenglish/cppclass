@@ -7,17 +7,22 @@
 #include <vector>         // std::vector
 #include <functional>     // std::greater
 #include <map>
+#include <unordered_map>
+#include <limits>
+#include <string.h>
+#include <algorithm>
+#include <sstream>
 using namespace std;
 
 class Node
 {
 public:
     int _vertexNum;
-    //priority_queue<int,std::vector<int>,greater<int>> neighbors;
-    map<int,int> _neighbors; //neighbor, distance
-    unsigned long long int _dist_from_source;
+    unordered_map<int,double> _neighbors; //neighbor, distance
+    double _dist_from_source;
     int prev_vertex = -1;
     bool visited = false;
+    bool in_queue = false;
     
     Node()
     {
@@ -42,7 +47,6 @@ public:
     
     void setVertex(int v)
     {
-        //cout << "setting vertex of node to " << v << endl;
         _vertexNum = v;
         
         //when setting vertex, if vertex is 1 (source), distance is 0, else infinity
@@ -52,14 +56,14 @@ public:
         }
         else
         {
-            _dist_from_source = ULONG_MAX;
+            _dist_from_source = numeric_limits<double>::max();
         }
     }
     
-    void setNeighbor(int targetNode, int distance)
+    void setNeighbor(int targetNode, double distance)
     {
-        int& current_distance = _neighbors[targetNode]; //get a reference to current best distance
-        if(current_distance == 0) //0 means uninitialized
+        double& current_distance = _neighbors[targetNode]; //get a reference to current best distance
+        if(current_distance < 0.1) //0 means uninitialized
         {
             current_distance = distance;
         }
@@ -71,21 +75,21 @@ public:
         }
     }
     
-    unsigned long long int distance_from_source() const
+    double distance_from_source() const
     {
         return _dist_from_source;
     }
     
-    void set_distance_from_source(unsigned long long int d)
+    void set_distance_from_source(double d)
     {
         _dist_from_source = d;
     }
     
-    int shortestDistanceToNode(int target)
+    double shortestDistanceToNode(int target)
     {
-        int distance = _neighbors[target];
+        double distance = _neighbors[target];
         
-        if(distance != 0)
+        if(distance > 0.1)
         {
             return distance;
         }
@@ -110,81 +114,40 @@ public:
     }
 };
 
-map<int,Node> nodes;
-
-//make a queue of unvisited nodes
-
-//std::priority_queue<int, std::vector<int>, std::greater<int> >third (myints,myints+4);
+unordered_map<int,Node> nodes;
 
 priority_queue<Node*, vector<Node>,mycomparison> unvisited_nodes;
 
-vector<int> nodes_to_check;
+//vector<int> nodes_to_check;
 
 int main()
 {
     int end_vertex, total_paths, current_node, current_target;
-    unsigned long long int current_distance;
+    int current_distance;
     cin >> end_vertex >>total_paths;
+    nodes.reserve(total_paths);
     for(int i = 0; i<total_paths; i++)
     {
         cin >> current_node >> current_target >> current_distance;
         
         Node& this_node = nodes[current_node];
         this_node.setVertex(current_node);
-        this_node.setNeighbor(current_target,current_distance);
+        this_node.setNeighbor(current_target,(double)current_distance);
         
         Node& other_node = nodes[current_target];
         other_node.setVertex(current_target);
-        other_node.setNeighbor(current_node,current_distance);
-        
-       // unvisited_nodes.push(this_node);
-        
+        other_node.setNeighbor(current_node,(double)current_distance);
     }
     
     //add final node as a Node object. it won't have any neighbors
     Node& end_node = nodes[end_vertex];
     end_node.setVertex(end_vertex);
+    nodes[1].in_queue = true;
     unvisited_nodes.push(nodes[1]);
-    
-    
-    //add nodes to a list of nodes to check
-    for (map<int,Node>::iterator it=nodes.begin(); it!=nodes.end(); ++it)
-    {
-        //unvisited_nodes.push(it->second);
-        //nodes_to_check.push_back(it->first);
-    }
     
     while(!unvisited_nodes.empty())
     {
         Node check_node = unvisited_nodes.top();
-        //find node with least distance from source
-        /*
-        Node least_node;
-        int least_dist = INT_MAX;
-        vector<int>::iterator index;
-        for(vector<int>::iterator node_it=nodes_to_check.begin(); node_it!=nodes_to_check.end();++node_it)
-        {
-            int cur_dist = nodes[*node_it].distance_from_source();
-            //cout << "Node " << *node_it << " distance " << nodes[*node_it].distance_from_source() << endl;
-            if(cur_dist <= least_dist)
-            {
-                least_node = nodes[*node_it];
-                least_dist = cur_dist;
-                index = node_it;
-            }
-        }
-
-        Node check_node = least_node;
-        if(*index == end_vertex)
-        {
-            nodes_to_check.clear();
-            break;
-        }
-        else
-        {
-            nodes_to_check.erase(index);
-        }
-        */
         //cout << "Checking node " << check_node._vertexNum << endl;
         
         
@@ -192,42 +155,44 @@ int main()
         //measure distance of check_node + distance to neighbor
         //if this distance is less than the neighbor's current distance, save distance to neighbor
         
-        for(map<int,int>::iterator it=check_node._neighbors.begin(); it!=check_node._neighbors.end();++it)
+        for(unordered_map<int,double>::iterator it=check_node._neighbors.begin(); it!=check_node._neighbors.end();++it)
         {
-            if(nodes[it->first].visited == false)
+            Node& neighbor_node = nodes[it->first];
+            if(neighbor_node.visited == false)
             {
-                unsigned long long int possible_dist = check_node.distance_from_source()+it->second;
-                //cout << "current node distance from source is " << nodes[check_node._vertexNum].distance_from_source() << endl;
-                //cout << "neighbor node " << it->first << " distance from current is " << it->second << endl;
-                if(possible_dist < nodes[it->first].distance_from_source())
+                neighbor_node.in_queue = false;
+                double possible_dist = check_node.distance_from_source()+it->second;
+                if(possible_dist < neighbor_node.distance_from_source())
                 {
-                    //cout << "setting node " << nodes[it->first]._vertexNum << " to distance " << possible_dist << endl;
-                    nodes[it->first].set_distance_from_source(possible_dist);
-                    nodes[it->first].set_prev(check_node._vertexNum);
-                    unvisited_nodes.push(nodes[it->first]);
+                    neighbor_node.set_distance_from_source(possible_dist);
+                    neighbor_node.set_prev(check_node._vertexNum);
+                    
+                    //only add a node to the queue if it is not already in the queue
+                    if(!neighbor_node.in_queue)
+                    {
+                        neighbor_node.in_queue = true;
+                        unvisited_nodes.push(neighbor_node);
+                    }
                 }
             }
         }
         check_node.visited = true;
         unvisited_nodes.pop();
 
-        //cout << "End of loop" << endl;
         
     }
-    
-   // cout << "Shortest distance from node 1 to node 4: " << nodes[4].distance_from_source() << endl;
-   /// cout << "node 4 previous node " << nodes[4].get_prev() << endl;
-   // cout << "path: " << endl;
     
     vector<Node> node_path;
     Node last_node = end_node;
     node_path.push_back(end_node);
+    
     while(last_node.get_prev() != -1)
     {
         node_path.push_back(nodes[last_node.get_prev()]);
        /// cout << "added node " << last_node.get_prev() << " to path " << endl;
         last_node = nodes[last_node.get_prev()];
     }
+    
     
     if(node_path.size()>1)
     {
@@ -241,14 +206,6 @@ int main()
     {
         cout << "-1" << endl;
     }
-    
-    
-    //go through nodes and set shortest path
-    
-    
-    //cout << "target vertex: " << end_vertex << ", total paths: " << total_paths << endl;
-    //cout << "shortest path from node 1 to node 2: " << nodes[1].shortestDistanceToNode(2) << endl;
-    //cout << "shortest path from node 2 to node 3: " << nodes[2].shortestDistanceToNode(3) << endl;
     
     
     return 0;
